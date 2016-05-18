@@ -1,0 +1,42 @@
+;===============================================================
+; Ramirez, Daniel
+; Login: drami025 (drami025@ucr.edu)
+; Section: 022
+; TA: Aditya Tammewar
+; Lab 04
+;
+; I hereby certify that the contents of this file
+; are ENTIRELY my own original work.
+;
+;===============================================================
+
+.orig x3000
+;---------------------------
+; Instructions
+;---------------------------
+	LD R0, COUNTER
+	LD R1, POINTER
+	LD R3, NUMBER
+
+	LOOP:
+		STR R3, R1, #0
+		ADD R1, R1, #1
+		ADD R3, R3, R3
+		ADD R0, R0, #1
+	BRn LOOP
+
+	LD R1, POINTER
+	LDR R2, R1, #6
+	
+	HALT
+;---------------------------
+; Local Data
+;---------------------------
+	
+	POINTER		.FILL	x4000
+	COUNTER		.FILL	#-10
+	NUMBER		.FILL	#1
+	.orig x4000
+		.BLKW		#10
+	
+.end
